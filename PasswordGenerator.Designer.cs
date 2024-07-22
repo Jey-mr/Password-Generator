@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswordGenerator));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            minChars = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            upperCase = new Label();
-            textBox3 = new TextBox();
-            specialChars = new Label();
+            minCharsLabel = new Label();
+            minChars = new TextBox();
+            upperCase = new TextBox();
+            upperCaseLable = new Label();
+            specialChars = new TextBox();
+            specialCharsLable = new Label();
             password = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -63,59 +63,59 @@
             label1.TabIndex = 1;
             label1.Text = "Enter the constraints:";
             // 
+            // minCharsLabel
+            // 
+            minCharsLabel.AutoSize = true;
+            minCharsLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            minCharsLabel.Location = new Point(325, 368);
+            minCharsLabel.Name = "minCharsLabel";
+            minCharsLabel.Size = new Size(172, 26);
+            minCharsLabel.TabIndex = 2;
+            minCharsLabel.Text = "Min no. of chars:";
+            // 
             // minChars
             // 
-            minChars.AutoSize = true;
             minChars.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            minChars.Location = new Point(325, 368);
+            minChars.Location = new Point(575, 365);
             minChars.Name = "minChars";
-            minChars.Size = new Size(172, 26);
-            minChars.TabIndex = 2;
-            minChars.Text = "Min no. of chars:";
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(575, 365);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 34);
-            textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            textBox2.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.Location = new Point(575, 434);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 34);
-            textBox2.TabIndex = 5;
+            minChars.Size = new Size(125, 34);
+            minChars.TabIndex = 3;
             // 
             // upperCase
             // 
-            upperCase.AutoSize = true;
             upperCase.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            upperCase.Location = new Point(314, 437);
+            upperCase.Location = new Point(575, 434);
             upperCase.Name = "upperCase";
-            upperCase.Size = new Size(183, 26);
-            upperCase.TabIndex = 4;
-            upperCase.Text = "No. of upper case:";
+            upperCase.Size = new Size(125, 34);
+            upperCase.TabIndex = 5;
             // 
-            // textBox3
+            // upperCaseLable
             // 
-            textBox3.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox3.Location = new Point(575, 500);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 34);
-            textBox3.TabIndex = 7;
+            upperCaseLable.AutoSize = true;
+            upperCaseLable.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            upperCaseLable.Location = new Point(314, 437);
+            upperCaseLable.Name = "upperCaseLable";
+            upperCaseLable.Size = new Size(183, 26);
+            upperCaseLable.TabIndex = 4;
+            upperCaseLable.Text = "No. of upper case:";
             // 
             // specialChars
             // 
-            specialChars.AutoSize = true;
             specialChars.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            specialChars.Location = new Point(295, 503);
+            specialChars.Location = new Point(575, 500);
             specialChars.Name = "specialChars";
-            specialChars.Size = new Size(202, 26);
-            specialChars.TabIndex = 6;
-            specialChars.Text = "No. of special chars:";
+            specialChars.Size = new Size(125, 34);
+            specialChars.TabIndex = 7;
+            // 
+            // specialCharsLable
+            // 
+            specialCharsLable.AutoSize = true;
+            specialCharsLable.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            specialCharsLable.Location = new Point(295, 503);
+            specialCharsLable.Name = "specialCharsLable";
+            specialCharsLable.Size = new Size(202, 26);
+            specialCharsLable.TabIndex = 6;
+            specialCharsLable.Text = "No. of special chars:";
             // 
             // password
             // 
@@ -136,12 +136,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1082, 752);
             Controls.Add(password);
-            Controls.Add(textBox3);
             Controls.Add(specialChars);
-            Controls.Add(textBox2);
+            Controls.Add(specialCharsLable);
             Controls.Add(upperCase);
-            Controls.Add(textBox1);
+            Controls.Add(upperCaseLable);
             Controls.Add(minChars);
+            Controls.Add(minCharsLabel);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "PasswordGenerator";
@@ -156,12 +156,12 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private Label minChars;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label upperCase;
-        private TextBox textBox3;
-        private Label specialChars;
+        private Label minCharsLabel;
+        private TextBox minChars;
+        private TextBox upperCase;
+        private Label upperCaseLable;
+        private TextBox specialChars;
+        private Label specialCharsLable;
         private Button password;
     }
 }

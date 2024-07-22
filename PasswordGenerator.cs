@@ -22,15 +22,15 @@ namespace PasswordGenerator
         private string GeneratePassword()
         {
             string password = "Password:\n";
-            int minChars, upperCase, specialChars, randomValue;
+            int minCharsVariable, upperCaseVariable, specialCharsVariable, randomValue;
             char[] specialCharsArr = {'!', '@', '#', '$', '%', '^', '&', '*'};
             Random random = new Random();   
 
             try
             {
-                minChars = (textBox1.Text.Length > 0) ? Int32.Parse(textBox1.Text) : 0;
-                upperCase = (textBox2.Text.Length > 0) ? Int32.Parse(textBox2.Text) : 0;
-                specialChars = (textBox3.Text.Length > 0) ? Int32.Parse(textBox3.Text) : 0;
+                minCharsVariable = (minChars.Text.Length > 0) ? Int32.Parse(minChars.Text) : 0;
+                upperCaseVariable = (upperCase.Text.Length > 0) ? Int32.Parse(upperCase.Text) : 0;
+                specialCharsVariable = (specialChars.Text.Length > 0) ? Int32.Parse(specialChars.Text) : 0;
             }
             catch (Exception e)
             {
@@ -39,7 +39,7 @@ namespace PasswordGenerator
 
             string temporaryPassword = "";
 
-            while (upperCase > 0  ||  specialChars > 0)
+            while (upperCaseVariable > 0  ||  specialCharsVariable > 0)
             {
                 randomValue = random.Next(3);
 
@@ -52,39 +52,39 @@ namespace PasswordGenerator
 
                 if (random.Next(2) == 0)
                 {
-                    randomValue = random.Next(upperCase + 1);
+                    randomValue = random.Next(upperCaseVariable + 1);
 
                     while (randomValue > 0)
                     {
                         char c = (char)('A' + random.Next(26));
                         temporaryPassword += c;
                         randomValue--;
-                        upperCase--;
+                        upperCaseVariable--;
                     }
                 }
                 else 
                 {
-                    randomValue = random.Next(specialChars + 1);
+                    randomValue = random.Next(specialCharsVariable + 1);
 
                     while (randomValue > 0)
                     {
                         char c = specialCharsArr[random.Next(specialCharsArr.Length)];
                         temporaryPassword += c;
                         randomValue--;
-                        specialChars--;
+                        specialCharsVariable--;
                     }
                 }
             }
 
-            minChars = minChars - temporaryPassword.Length;
+            minCharsVariable = minCharsVariable - temporaryPassword.Length;
 
-            if (minChars > 0)
+            if (minCharsVariable > 0)
             {
-                while (minChars > 0)
+                while (minCharsVariable > 0)
                 {
                     char c = (char)('a' + random.Next(26));
                     temporaryPassword += c;
-                    minChars--;
+                    minCharsVariable--;
                 }
             }
 
@@ -95,9 +95,9 @@ namespace PasswordGenerator
 
         private void Clear()
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
+            minChars.Text = "";
+            upperCase.Text = "";
+            specialChars.Text = "";
         }
     }
 }
