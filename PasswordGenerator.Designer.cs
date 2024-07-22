@@ -34,10 +34,12 @@
             minCharsLabel = new Label();
             minChars = new TextBox();
             upperCase = new TextBox();
-            upperCaseLable = new Label();
+            upperCaseLabel = new Label();
             specialChars = new TextBox();
-            specialCharsLable = new Label();
+            specialCharsLabel = new Label();
             password = new Button();
+            maxChars = new TextBox();
+            maxCharsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(235, 276);
+            label1.Location = new Point(343, 276);
             label1.Name = "label1";
             label1.Size = new Size(359, 42);
             label1.TabIndex = 1;
@@ -67,16 +69,16 @@
             // 
             minCharsLabel.AutoSize = true;
             minCharsLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            minCharsLabel.Location = new Point(325, 368);
+            minCharsLabel.Location = new Point(265, 368);
             minCharsLabel.Name = "minCharsLabel";
-            minCharsLabel.Size = new Size(172, 26);
+            minCharsLabel.Size = new Size(268, 26);
             minCharsLabel.TabIndex = 2;
-            minCharsLabel.Text = "Min no. of chars:";
+            minCharsLabel.Text = "Minimum number of chars:";
             // 
             // minChars
             // 
             minChars.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            minChars.Location = new Point(575, 365);
+            minChars.Location = new Point(593, 365);
             minChars.Name = "minChars";
             minChars.Size = new Size(125, 34);
             minChars.TabIndex = 3;
@@ -84,45 +86,45 @@
             // upperCase
             // 
             upperCase.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            upperCase.Location = new Point(575, 434);
+            upperCase.Location = new Point(593, 434);
             upperCase.Name = "upperCase";
             upperCase.Size = new Size(125, 34);
             upperCase.TabIndex = 5;
             // 
-            // upperCaseLable
+            // upperCaseLabel
             // 
-            upperCaseLable.AutoSize = true;
-            upperCaseLable.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            upperCaseLable.Location = new Point(314, 437);
-            upperCaseLable.Name = "upperCaseLable";
-            upperCaseLable.Size = new Size(183, 26);
-            upperCaseLable.TabIndex = 4;
-            upperCaseLable.Text = "No. of upper case:";
+            upperCaseLabel.AutoSize = true;
+            upperCaseLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            upperCaseLabel.Location = new Point(308, 437);
+            upperCaseLabel.Name = "upperCaseLabel";
+            upperCaseLabel.Size = new Size(225, 26);
+            upperCaseLabel.TabIndex = 4;
+            upperCaseLabel.Text = "Number of upper case:";
             // 
             // specialChars
             // 
             specialChars.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            specialChars.Location = new Point(575, 500);
+            specialChars.Location = new Point(593, 500);
             specialChars.Name = "specialChars";
             specialChars.Size = new Size(125, 34);
             specialChars.TabIndex = 7;
             // 
-            // specialCharsLable
+            // specialCharsLabel
             // 
-            specialCharsLable.AutoSize = true;
-            specialCharsLable.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            specialCharsLable.Location = new Point(295, 503);
-            specialCharsLable.Name = "specialCharsLable";
-            specialCharsLable.Size = new Size(202, 26);
-            specialCharsLable.TabIndex = 6;
-            specialCharsLable.Text = "No. of special chars:";
+            specialCharsLabel.AutoSize = true;
+            specialCharsLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            specialCharsLabel.Location = new Point(289, 503);
+            specialCharsLabel.Name = "specialCharsLabel";
+            specialCharsLabel.Size = new Size(244, 26);
+            specialCharsLabel.TabIndex = 6;
+            specialCharsLabel.Text = "Number of special chars:";
             // 
             // password
             // 
             password.BackColor = Color.Blue;
             password.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             password.ForeColor = Color.White;
-            password.Location = new Point(413, 584);
+            password.Location = new Point(413, 645);
             password.Name = "password";
             password.Size = new Size(227, 46);
             password.TabIndex = 8;
@@ -130,16 +132,36 @@
             password.UseVisualStyleBackColor = false;
             password.Click += password_Click;
             // 
+            // maxChars
+            // 
+            maxChars.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            maxChars.Location = new Point(593, 571);
+            maxChars.Name = "maxChars";
+            maxChars.Size = new Size(125, 34);
+            maxChars.TabIndex = 10;
+            // 
+            // maxCharsLabel
+            // 
+            maxCharsLabel.AutoSize = true;
+            maxCharsLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            maxCharsLabel.Location = new Point(262, 574);
+            maxCharsLabel.Name = "maxCharsLabel";
+            maxCharsLabel.Size = new Size(271, 26);
+            maxCharsLabel.TabIndex = 9;
+            maxCharsLabel.Text = "Maximum number of chars:";
+            // 
             // PasswordGenerator
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1082, 752);
+            Controls.Add(maxChars);
+            Controls.Add(maxCharsLabel);
             Controls.Add(password);
             Controls.Add(specialChars);
-            Controls.Add(specialCharsLable);
+            Controls.Add(specialCharsLabel);
             Controls.Add(upperCase);
-            Controls.Add(upperCaseLable);
+            Controls.Add(upperCaseLabel);
             Controls.Add(minChars);
             Controls.Add(minCharsLabel);
             Controls.Add(label1);
@@ -159,9 +181,11 @@
         private Label minCharsLabel;
         private TextBox minChars;
         private TextBox upperCase;
-        private Label upperCaseLable;
+        private Label upperCaseLabel;
         private TextBox specialChars;
-        private Label specialCharsLable;
+        private Label specialCharsLabel;
         private Button password;
+        private TextBox maxChars;
+        private Label maxCharsLabel;
     }
 }

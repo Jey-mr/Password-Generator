@@ -22,7 +22,7 @@ namespace PasswordGenerator
         private string GeneratePassword()
         {
             string password = "Password:\n";
-            int minCharsVariable, upperCaseVariable, specialCharsVariable, randomValue;
+            int minCharsVariable, upperCaseVariable, specialCharsVariable, maxCharsVariable, randomValue;
             char[] specialCharsArr = {'!', '@', '#', '$', '%', '^', '&', '*'};
             Random random = new Random();   
 
@@ -31,11 +31,33 @@ namespace PasswordGenerator
                 minCharsVariable = (minChars.Text.Length > 0) ? Int32.Parse(minChars.Text) : 0;
                 upperCaseVariable = (upperCase.Text.Length > 0) ? Int32.Parse(upperCase.Text) : 0;
                 specialCharsVariable = (specialChars.Text.Length > 0) ? Int32.Parse(specialChars.Text) : 0;
+                maxCharsVariable = (maxChars.Text.Length > 0) ? Int32.Parse(maxChars.Text) : upperCaseVariable + specialCharsVariable;
             }
             catch (Exception e)
             {
                 return "Invalid Constraints";
             }
+
+            if (minCharsVariable == 0  &&  upperCaseVariable == 0  &&  specialCharsVariable == 0  &&  maxCharsVariable == 0)
+            {
+                minCharsVariable = maxCharsVariable = random.Next(8, 16);
+            }
+
+            if (minCharsVariable > maxCharsVariable)
+            {
+                return "Min chars must be less than or equal to Max chars";
+            }
+
+            if (upperCaseVariable + specialCharsVariable  >  maxCharsVariable)
+            {
+                return "Max chars must be greator than or equal to the sum of upper case and special chars";
+            }
+
+            if (upperCaseVariable + specialCharsVariable > minCharsVariable)
+            {
+                minCharsVariable = upperCaseVariable + specialCharsVariable;
+            }
+
 
             string temporaryPassword = "";
 
@@ -76,16 +98,21 @@ namespace PasswordGenerator
                 }
             }
 
-            minCharsVariable = minCharsVariable - temporaryPassword.Length;
+            int tempMinCharsVariable = minCharsVariable - temporaryPassword.Length;
 
-            if (minCharsVariable > 0)
+            if (tempMinCharsVariable > 0)
             {
-                while (minCharsVariable > 0)
+                while (tempMinCharsVariable > 0)
                 {
                     char c = (char)('a' + random.Next(26));
                     temporaryPassword += c;
-                    minCharsVariable--;
+                    tempMinCharsVariable--;
                 }
+            }
+
+            if (temporaryPassword.Length > maxCharsVariable)
+            {
+                temporaryPassword = stripChars(temporaryPassword, minCharsVariable, maxCharsVariable);
             }
 
             password += temporaryPassword;
@@ -93,11 +120,44 @@ namespace PasswordGenerator
             return password;
         }
 
+        private string stripChars(string password, int min, int max)
+        {
+            string result = "";
+            int size = password.Length;
+            bool[] chars = new bool[size];
+            Random random = new Random(); 
+            int NofCharsReduce = size - random.Next(min, max+1);
+
+            while (NofCharsReduce > 0) 
+            {
+                int index = random.Next(size);
+
+                if (password[index] >= 'a'  &&  password[index] <= 'z'  &&  !chars[index])
+                {
+                    chars[index] = true;
+                    NofCharsReduce--;
+                }
+            }
+
+            for (int i=0; i<size; i++)
+            {
+                if (chars[i])
+                {
+                    continue;
+                }
+
+                result += password[i];
+            }
+
+            return result;
+        }
+
         private void Clear()
         {
             minChars.Text = "";
             upperCase.Text = "";
             specialChars.Text = "";
+            maxChars.Text = "";
         }
     }
 }
