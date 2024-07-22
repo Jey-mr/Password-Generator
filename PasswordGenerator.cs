@@ -14,9 +14,20 @@ namespace PasswordGenerator
 
         private void password_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Minimum number of chars: "+minChars.Text);
-            Console.WriteLine("Number of upper case: "+upperCase.Text);
-            Console.WriteLine("Number of special chars: "+specialChars.Text);
+            string mchars = textBox1.Text;
+            string uc = textBox2.Text;
+            string sc = textBox3.Text;
+
+            string constraints = "Min no. of chars: " + mchars + "\nNo. of upper case: " + uc + "\nNo. of special chars: " + sc;
+            MessageBox.Show(constraints);
+            Clear();
+        }
+
+        private void Clear()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
         }
     }
 }
