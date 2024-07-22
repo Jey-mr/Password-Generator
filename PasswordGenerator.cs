@@ -14,13 +14,83 @@ namespace PasswordGenerator
 
         private void password_Click(object sender, EventArgs e)
         {
-            string mchars = textBox1.Text;
-            string uc = textBox2.Text;
-            string sc = textBox3.Text;
-
-            string constraints = "Min no. of chars: " + mchars + "\nNo. of upper case: " + uc + "\nNo. of special chars: " + sc;
-            MessageBox.Show(constraints);
+            string generatedPassword = GeneratePassword();
+            MessageBox.Show(generatedPassword);
             Clear();
+        }
+
+        private string GeneratePassword()
+        {
+            string password = "Password:\n";
+            int minChars, upperCase, specialChars, randomValue;
+            char[] specialCharsArr = {'!', '@', '#', '$', '%', '^', '&', '*'};
+            Random random = new Random();   
+
+            try
+            {
+                minChars = (textBox1.Text.Length > 0) ? Int32.Parse(textBox1.Text) : 0;
+                upperCase = (textBox2.Text.Length > 0) ? Int32.Parse(textBox2.Text) : 0;
+                specialChars = (textBox3.Text.Length > 0) ? Int32.Parse(textBox3.Text) : 0;
+            }
+            catch (Exception e)
+            {
+                return "Invalid Constraints";
+            }
+
+            string temporaryPassword = "";
+
+            while (upperCase > 0  ||  specialChars > 0)
+            {
+                randomValue = random.Next(3);
+
+                while (randomValue > 0)
+                {
+                    char c = (char)('a' + random.Next(26));
+                    temporaryPassword += c;
+                    randomValue--;
+                }
+
+                if (random.Next(2) == 0)
+                {
+                    randomValue = random.Next(upperCase + 1);
+
+                    while (randomValue > 0)
+                    {
+                        char c = (char)('A' + random.Next(26));
+                        temporaryPassword += c;
+                        randomValue--;
+                        upperCase--;
+                    }
+                }
+                else 
+                {
+                    randomValue = random.Next(specialChars + 1);
+
+                    while (randomValue > 0)
+                    {
+                        char c = specialCharsArr[random.Next(specialCharsArr.Length)];
+                        temporaryPassword += c;
+                        randomValue--;
+                        specialChars--;
+                    }
+                }
+            }
+
+            minChars = minChars - temporaryPassword.Length;
+
+            if (minChars > 0)
+            {
+                while (minChars > 0)
+                {
+                    char c = (char)('a' + random.Next(26));
+                    temporaryPassword += c;
+                    minChars--;
+                }
+            }
+
+            password += temporaryPassword;
+
+            return password;
         }
 
         private void Clear()
