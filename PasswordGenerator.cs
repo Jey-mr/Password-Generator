@@ -18,10 +18,14 @@ namespace PasswordGenerator
         private void password_Click(object sender, EventArgs e)
         {
             NewTable nt = new NewTable();
+            /*
             DataTable dt = nt.Select();
             DataRowCollection rows = dt.Rows;
             DataRow row = rows[0];
             string? generatedPassword = row["Name"].ToString();
+            */
+
+            string? generatedPassword = nt.Insert().ToString();
             MessageBox.Show(generatedPassword);
             Clear();
         }
@@ -123,7 +127,6 @@ namespace PasswordGenerator
             }
 
             password += temporaryPassword;
-
             return password;
         }
 

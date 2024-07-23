@@ -40,5 +40,37 @@ namespace PasswordGenerator.PGClasses
 
             return dt;
         }
+
+        public bool Insert()
+        {
+            bool isSuccess = false;
+            SqlConnection conn = new SqlConnection(mycs);
+
+            try
+            {
+                string sql = "insert into new_table values(@Id, @Name, @Password)";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Id", 3);
+                cmd.Parameters.AddWithValue("@Name", "Neymar");
+                cmd.Parameters.AddWithValue("@Password", "password3");
+                conn.Open();
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    isSuccess = true;
+                }
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return isSuccess;
+        }
     }
 }
