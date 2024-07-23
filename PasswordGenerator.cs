@@ -1,3 +1,6 @@
+using PasswordGenerator.PGClasses;
+using System.Data;
+
 namespace PasswordGenerator
 {
     public partial class PasswordGenerator : Form
@@ -14,7 +17,11 @@ namespace PasswordGenerator
 
         private void password_Click(object sender, EventArgs e)
         {
-            string generatedPassword = GeneratePassword();
+            NewTable nt = new NewTable();
+            DataTable dt = nt.Select();
+            DataRowCollection rows = dt.Rows;
+            DataRow row = rows[0];
+            string? generatedPassword = row["Name"].ToString();
             MessageBox.Show(generatedPassword);
             Clear();
         }
