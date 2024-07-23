@@ -23,10 +23,13 @@ namespace PasswordGenerator
             DataRowCollection rows = dt.Rows;
             DataRow row = rows[0];
             string? generatedPassword = row["Name"].ToString();
-            */
-
+            
             string? generatedPassword = nt.Insert().ToString();
             MessageBox.Show(generatedPassword);
+            */
+
+            PasswordStore form = new PasswordStore("Hello World!");
+            form.Show();
             Clear();
         }
 
