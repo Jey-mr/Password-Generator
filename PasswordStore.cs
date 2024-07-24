@@ -14,15 +14,19 @@ namespace PasswordGenerator
 {
     public partial class PasswordStore : Form
     {
+        private string _url;
+        private string _userName;
         private string _password;
         public PasswordStore()
         {
             InitializeComponent();
         }
 
-        public PasswordStore(string password)
+        public PasswordStore(string url, string userName, string password)
         {
             InitializeComponent();
+            _url = url;
+            _userName = userName;
             _password = password;
             passwordLabel.Text = _password;
         }
@@ -36,8 +40,8 @@ namespace PasswordGenerator
         {
             string encryptedPassword = Encrypt(_password);
             string decryptedPassword = Decrypt(encryptedPassword);
-            NewTable nt = new NewTable();
-            bool inserted = nt.Insert(encryptedPassword);
+            PasswordGen pg = new PasswordGen();
+            bool inserted = pg.Insert(_url, _userName, encryptedPassword);
 
             //MessageBox.Show("Encrypted Password: " + encryptedPassword + "\nDecrypted Password: " + decryptedPassword + "\nInserted: " + inserted);
             MessageBox.Show("Your password has been stored.");

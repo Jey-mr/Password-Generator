@@ -28,11 +28,20 @@ namespace PasswordGenerator
                 MessageBox.Show(generatedPassword);
             */
 
-            string? generatedPassword = GeneratePassword();
-            if (generatedPassword != null)
+            string? urlVariable = (url.Text.Length > 0) ? url.Text : null;
+            string? userNameVariable = (userName.Text.Length > 0) ? userName.Text : null;
+            if (urlVariable == null  ||  userNameVariable == null)
             {
-                PasswordStore form = new PasswordStore(generatedPassword);
-                form.Show();
+                MessageBox.Show("URL and UserName should not be empty");
+            }
+            else
+            { 
+                string? generatedPassword = GeneratePassword();
+                if (generatedPassword != null)
+                {
+                    PasswordStore form = new PasswordStore(urlVariable, userNameVariable, generatedPassword);
+                    form.Show();
+                }
             }
             Clear();
         }
@@ -175,6 +184,8 @@ namespace PasswordGenerator
             upperCase.Text = "";
             specialChars.Text = "";
             maxChars.Text = "";
+            url.Text = "";
+            userName.Text = "";
         }
     }
 }
