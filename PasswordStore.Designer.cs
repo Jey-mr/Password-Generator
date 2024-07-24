@@ -54,11 +54,11 @@
             // 
             passwordHeadingLabel.AutoSize = true;
             passwordHeadingLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            passwordHeadingLabel.Location = new Point(411, 299);
+            passwordHeadingLabel.Location = new Point(441, 245);
             passwordHeadingLabel.Name = "passwordHeadingLabel";
-            passwordHeadingLabel.Size = new Size(108, 26);
+            passwordHeadingLabel.Size = new Size(174, 26);
             passwordHeadingLabel.TabIndex = 1;
-            passwordHeadingLabel.Text = "Password:";
+            passwordHeadingLabel.Text = "Your password is";
             // 
             // password
             // 
@@ -73,7 +73,7 @@
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            passwordLabel.Location = new Point(516, 291);
+            passwordLabel.Location = new Point(475, 303);
             passwordLabel.Name = "passwordLabel";
             passwordLabel.Size = new Size(90, 35);
             passwordLabel.TabIndex = 3;
@@ -85,11 +85,11 @@
             ignore.FlatStyle = FlatStyle.Popup;
             ignore.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ignore.ForeColor = Color.White;
-            ignore.Location = new Point(469, 401);
+            ignore.Location = new Point(537, 382);
             ignore.Name = "ignore";
             ignore.Size = new Size(94, 29);
             ignore.TabIndex = 4;
-            ignore.Text = "Ignore";
+            ignore.Text = "Close";
             ignore.UseVisualStyleBackColor = false;
             ignore.Click += ignore_Click;
             // 
@@ -100,7 +100,7 @@
             store.FlatStyle = FlatStyle.Popup;
             store.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             store.ForeColor = Color.White;
-            store.Location = new Point(469, 347);
+            store.Location = new Point(421, 382);
             store.Name = "store";
             store.Size = new Size(94, 29);
             store.TabIndex = 5;

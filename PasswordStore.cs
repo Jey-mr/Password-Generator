@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordGenerator.PGClasses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,10 +34,14 @@ namespace PasswordGenerator
 
         private void store_Click(object sender, EventArgs e)
         {
-            string encryptedData = Encrypt(_password);
-            string decryptedData = Decrypt(encryptedData);
+            string encryptedPassword = Encrypt(_password);
+            string decryptedPassword = Decrypt(encryptedPassword);
+            NewTable nt = new NewTable();
+            bool inserted = nt.Insert(encryptedPassword);
 
-            MessageBox.Show("Encrypted Data: " + encryptedData + "\nDecrypted Data: " + decryptedData);
+            //MessageBox.Show("Encrypted Password: " + encryptedPassword + "\nDecrypted Password: " + decryptedPassword + "\nInserted: " + inserted);
+            MessageBox.Show("Your password has been stored.");
+            this.Close();
         }
 
         public static string Encrypt(string data)

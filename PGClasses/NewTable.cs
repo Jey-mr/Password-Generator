@@ -12,7 +12,6 @@ namespace PasswordGenerator.PGClasses
     internal class NewTable
     {
         public int Id { get; set; } 
-        public string Name { get; set; }    
         public string Password { get; set; }
         static string mycs = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
 
@@ -41,18 +40,41 @@ namespace PasswordGenerator.PGClasses
             return dt;
         }
 
-        public bool Insert()
+        public DataTable GetPassword()
+        {
+            SqlConnection conn = new SqlConnection(mycs);
+            DataTable dt = new DataTable();
+
+            try
+            {
+                string sql = "select password from new_table";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                conn.Open();
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return dt;
+        }
+
+        public bool Insert(string password)
         {
             bool isSuccess = false;
             SqlConnection conn = new SqlConnection(mycs);
 
             try
             {
-                string sql = "insert into new_table values(@Id, @Name, @Password)";
+                string sql = "insert into new_table values(@Password)";
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@Id", 3);
-                cmd.Parameters.AddWithValue("@Name", "Neymar");
-                cmd.Parameters.AddWithValue("@Password", "password3");
+                cmd.Parameters.AddWithValue("@Password", password);
                 conn.Open();
                 int rows = cmd.ExecuteNonQuery();
 
