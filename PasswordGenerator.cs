@@ -78,7 +78,6 @@ namespace PasswordGenerator
                 minCharsVariable = upperCaseVariable + specialCharsVariable;
             }
 
-
             string password = "";
 
             while (upperCaseVariable > 0  ||  specialCharsVariable > 0)
