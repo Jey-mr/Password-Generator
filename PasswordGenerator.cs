@@ -30,12 +30,16 @@ namespace PasswordGenerator
 
             string? urlVariable = (url.Text.Length > 0) ? url.Text : null;
             string? userNameVariable = (userName.Text.Length > 0) ? userName.Text : null;
-            if (urlVariable == null  ||  userNameVariable == null)
+            if (urlVariable == null || userNameVariable == null)
             {
                 MessageBox.Show("URL and UserName should not be empty");
             }
+            else if (!Uri.IsWellFormedUriString(urlVariable, UriKind.Absolute))
+            {
+                MessageBox.Show("Enter a valid url!");
+            }
             else
-            { 
+            {
                 string? generatedPassword = GeneratePassword();
                 if (generatedPassword != null)
                 {
@@ -49,8 +53,8 @@ namespace PasswordGenerator
         private string GeneratePassword()
         {
             int minCharsVariable, upperCaseVariable, specialCharsVariable, maxCharsVariable, randomValue;
-            char[] specialCharsArr = {'!', '@', '#', '$', '%', '^', '&', '*'};
-            Random random = new Random();   
+            char[] specialCharsArr = { '!', '@', '#', '$', '%', '^', '&', '*' };
+            Random random = new Random();
 
             try
             {
@@ -71,7 +75,7 @@ namespace PasswordGenerator
                 return null;
             }
 
-            if (upperCaseVariable + specialCharsVariable  >  maxCharsVariable)
+            if (upperCaseVariable + specialCharsVariable > maxCharsVariable)
             {
                 MessageBox.Show("Max chars must be greator than or equal to the sum of upper case and special chars");
                 return null;
@@ -89,7 +93,7 @@ namespace PasswordGenerator
 
             string password = "";
 
-            while (upperCaseVariable > 0  ||  specialCharsVariable > 0)
+            while (upperCaseVariable > 0 || specialCharsVariable > 0)
             {
                 randomValue = random.Next(3);
 
@@ -112,7 +116,7 @@ namespace PasswordGenerator
                         upperCaseVariable--;
                     }
                 }
-                else 
+                else
                 {
                     randomValue = random.Next(specialCharsVariable + 1);
 
@@ -151,21 +155,21 @@ namespace PasswordGenerator
             string result = "";
             int size = password.Length;
             bool[] chars = new bool[size];
-            Random random = new Random(); 
-            int NofCharsReduce = size - random.Next(min, max+1);
+            Random random = new Random();
+            int NofCharsReduce = size - random.Next(min, max + 1);
 
-            while (NofCharsReduce > 0) 
+            while (NofCharsReduce > 0)
             {
                 int index = random.Next(size);
 
-                if (password[index] >= 'a'  &&  password[index] <= 'z'  &&  !chars[index])
+                if (password[index] >= 'a' && password[index] <= 'z' && !chars[index])
                 {
                     chars[index] = true;
                     NofCharsReduce--;
                 }
             }
 
-            for (int i=0; i<size; i++)
+            for (int i = 0; i < size; i++)
             {
                 if (chars[i])
                 {
@@ -186,6 +190,12 @@ namespace PasswordGenerator
             maxChars.Text = "";
             url.Text = "";
             userName.Text = "";
+        }
+
+        private void searchPassword_Click(object sender, EventArgs e)
+        {
+            PasswordSearch form = new PasswordSearch();
+            form.Show();
         }
     }
 }

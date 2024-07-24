@@ -44,6 +44,7 @@
             urlLabel = new Label();
             userName = new TextBox();
             label3 = new Label();
+            searchPassword = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -128,7 +129,7 @@
             password.BackColor = Color.Blue;
             password.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             password.ForeColor = Color.White;
-            password.Location = new Point(413, 670);
+            password.Location = new Point(265, 681);
             password.Name = "password";
             password.Size = new Size(227, 46);
             password.TabIndex = 20;
@@ -190,11 +191,25 @@
             label3.TabIndex = 13;
             label3.Text = "User Name:";
             // 
+            // searchPassword
+            // 
+            searchPassword.BackColor = Color.Green;
+            searchPassword.Font = new Font("Times New Roman", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchPassword.ForeColor = Color.White;
+            searchPassword.Location = new Point(511, 681);
+            searchPassword.Name = "searchPassword";
+            searchPassword.Size = new Size(227, 46);
+            searchPassword.TabIndex = 21;
+            searchPassword.Text = "Search Password";
+            searchPassword.UseVisualStyleBackColor = false;
+            searchPassword.Click += searchPassword_Click;
+            // 
             // PasswordGenerator
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1091, 879);
+            Controls.Add(searchPassword);
             Controls.Add(userName);
             Controls.Add(label3);
             Controls.Add(url);
@@ -235,5 +250,6 @@
         private Label urlLabel;
         private TextBox userName;
         private Label label3;
+        private Button searchPassword;
     }
 }

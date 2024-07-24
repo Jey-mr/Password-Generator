@@ -42,6 +42,33 @@ namespace PasswordGenerator.PGClasses
             return dt;
         }
 
+        public DataTable FindByURL(string url)
+        {
+            SqlConnection conn = new SqlConnection(mycs);
+            DataTable dt = new DataTable();
+
+            try
+            {
+                //string sql = "select * from password";
+                string sql = "select * from password where url like @Url";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Url", url);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                conn.Open();
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return dt;
+        }
+
         public bool Insert(string url, string userName, string password)
         {
             bool isSuccess = false;

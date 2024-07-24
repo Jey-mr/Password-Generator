@@ -73,7 +73,7 @@
             // 
             passwordLabel.AutoSize = true;
             passwordLabel.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            passwordLabel.Location = new Point(475, 303);
+            passwordLabel.Location = new Point(441, 299);
             passwordLabel.Name = "passwordLabel";
             passwordLabel.Size = new Size(90, 35);
             passwordLabel.TabIndex = 3;
