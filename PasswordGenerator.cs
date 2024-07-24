@@ -29,8 +29,11 @@ namespace PasswordGenerator
             */
 
             string? generatedPassword = GeneratePassword();
-            PasswordStore form = new PasswordStore(generatedPassword);
-            form.Show();
+            if (generatedPassword != null)
+            {
+                PasswordStore form = new PasswordStore(generatedPassword);
+                form.Show();
+            }
             Clear();
         }
 
@@ -42,29 +45,32 @@ namespace PasswordGenerator
 
             try
             {
-                minCharsVariable = (minChars.Text.Length > 0) ? Int32.Parse(minChars.Text) : 0;
                 upperCaseVariable = (upperCase.Text.Length > 0) ? Int32.Parse(upperCase.Text) : 0;
                 specialCharsVariable = (specialChars.Text.Length > 0) ? Int32.Parse(specialChars.Text) : 0;
-                maxCharsVariable = (maxChars.Text.Length > 0) ? Int32.Parse(maxChars.Text) : upperCaseVariable + specialCharsVariable;
+                minCharsVariable = (minChars.Text.Length > 0) ? Int32.Parse(minChars.Text) : upperCaseVariable + specialCharsVariable;
+                maxCharsVariable = (maxChars.Text.Length > 0) ? Int32.Parse(maxChars.Text) : minCharsVariable;
             }
             catch (Exception e)
             {
-                return "Invalid Constraints";
-            }
-
-            if (minCharsVariable == 0  &&  upperCaseVariable == 0  &&  specialCharsVariable == 0  &&  maxCharsVariable == 0)
-            {
-                minCharsVariable = maxCharsVariable = random.Next(8, 16);
+                MessageBox.Show("Invalid Constraints");
+                return null;
             }
 
             if (minCharsVariable > maxCharsVariable)
             {
-                return "Min chars must be less than or equal to Max chars";
+                MessageBox.Show("Min chars must be less than or equal to Max chars");
+                return null;
             }
 
             if (upperCaseVariable + specialCharsVariable  >  maxCharsVariable)
             {
-                return "Max chars must be greator than or equal to the sum of upper case and special chars";
+                MessageBox.Show("Max chars must be greator than or equal to the sum of upper case and special chars");
+                return null;
+            }
+
+            if (minCharsVariable == 0 && upperCaseVariable == 0 && specialCharsVariable == 0 && maxCharsVariable == 0)
+            {
+                minCharsVariable = maxCharsVariable = random.Next(8, 16);
             }
 
             if (upperCaseVariable + specialCharsVariable > minCharsVariable)
