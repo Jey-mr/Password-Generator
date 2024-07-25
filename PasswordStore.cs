@@ -40,13 +40,16 @@ namespace PasswordGenerator
         private void store_Click(object sender, EventArgs e)
         {
             string encryptedPassword = Encrypt(_password);
-            string decryptedPassword = Decrypt(encryptedPassword);
-            Database pg = new Database();
-            bool inserted = pg.Insert(_url, _userName, encryptedPassword);
-
+            //string decryptedPassword = Decrypt(encryptedPassword);
             //MessageBox.Show("Encrypted Password: " + encryptedPassword + "\nDecrypted Password: " + decryptedPassword + "\nInserted: " + inserted);
             MessageBox.Show("Your password has been stored.");
             this.Close();
+        }
+
+        public void StoreInDatabase(string encryptedPassword)
+        {
+            Database db = new Database();
+            bool inserted = db.Insert(_url, _userName, encryptedPassword);
         }
 
         public static string Encrypt(string data)

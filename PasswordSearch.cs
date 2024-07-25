@@ -24,18 +24,23 @@ namespace PasswordGenerator
             }
             else
             {
-                Database pg = new Database();
-                DataTable dt = pg.FindByURL(url);
-                string? result = "";
 
-                foreach (DataRow row in dt.Rows)
-                {
-                    result += row["user_name"] + ": ";
-                    result += PasswordStore.Decrypt(row["password"].ToString());
-                    result += "\n";
-                }
-                MessageBox.Show(result);
             }
+        }
+
+        private void FetchFromDatabase(string url)
+        {
+            Database db = new Database();
+            DataTable dt = db.FindByURL(url);
+            string? result = "";
+
+            foreach (DataRow row in dt.Rows)
+            {
+                result += row["user_name"] + ": ";
+                result += PasswordStore.Decrypt(row["password"].ToString());
+                result += "\n";
+            }
+            MessageBox.Show(result);
         }
     }
 }
