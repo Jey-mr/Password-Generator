@@ -24,7 +24,7 @@ namespace PasswordGenerator
             }
             else
             {
-                PasswordGen pg = new PasswordGen();
+                Database pg = new Database();
                 DataTable dt = pg.FindByURL(url);
                 string? result = "";
 

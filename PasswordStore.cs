@@ -41,7 +41,7 @@ namespace PasswordGenerator
         {
             string encryptedPassword = Encrypt(_password);
             string decryptedPassword = Decrypt(encryptedPassword);
-            PasswordGen pg = new PasswordGen();
+            Database pg = new Database();
             bool inserted = pg.Insert(_url, _userName, encryptedPassword);
 
             //MessageBox.Show("Encrypted Password: " + encryptedPassword + "\nDecrypted Password: " + decryptedPassword + "\nInserted: " + inserted);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PasswordGenerator.PGClasses
 {
-    internal class PasswordGen
+    internal class Database
     {
         public int Id { get; set; }
         public string Url { get; set; }
