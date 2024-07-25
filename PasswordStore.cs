@@ -17,6 +17,7 @@ namespace PasswordGenerator
         private string _url;
         private string _userName;
         private string _password;
+
         public PasswordStore()
         {
             InitializeComponent();
