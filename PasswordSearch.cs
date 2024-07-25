@@ -1,4 +1,5 @@
-﻿using PasswordGenerator.PGClasses;
+﻿using Newtonsoft.Json;
+using PasswordGenerator.PGClasses;
 using System.Data;
 
 namespace PasswordGenerator
@@ -24,8 +25,31 @@ namespace PasswordGenerator
             }
             else
             {
-
+                FetchFromDisk(url);
             }
+        }
+
+        private void FetchFromDisk(string url)
+        {
+            string docPath = "C:\\Users\\Jeygm\\OneDrive\\Desktop\\PasswordGenerator\\PGClasses\\password.txt";
+            string data = File.ReadAllText(docPath);
+            List<Password> ps = JsonConvert.DeserializeObject<List<Password>>('[' + data + ']');
+            string result = "{\n";
+
+            foreach (Password p in ps)
+            {
+                if (url.Equals(p.Url))
+                {
+                    result += "    ";
+                    result += "\"" + p.UserName + "\" : ";
+                    result += Security.Decrypt(p.UserPassword);
+                    result += "\n";
+                }
+            }
+
+            result += "}";
+
+            MessageBox.Show(result);
         }
 
         private void FetchFromDatabase(string url)
@@ -37,7 +61,7 @@ namespace PasswordGenerator
             foreach (DataRow row in dt.Rows)
             {
                 result += row["user_name"] + ": ";
-                result += PasswordStore.Decrypt(row["password"].ToString());
+                result += Security.Decrypt(row["password"].ToString());
                 result += "\n";
             }
             MessageBox.Show(result);

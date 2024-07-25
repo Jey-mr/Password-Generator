@@ -39,32 +39,30 @@ namespace PasswordGenerator
 
         private void store_Click(object sender, EventArgs e)
         {
-            string encryptedPassword = Encrypt(_password);
-            //string decryptedPassword = Decrypt(encryptedPassword);
-            //MessageBox.Show("Encrypted Password: " + encryptedPassword + "\nDecrypted Password: " + decryptedPassword + "\nInserted: " + inserted);
-            MessageBox.Show("Your password has been stored.");
+            if (StoreInDisk())
+            { 
+                MessageBox.Show("Your password has been stored");
+            }
+            else
+            {
+                MessageBox.Show("An error has been occurred while storing your password");
+            }
+
             this.Close();
         }
 
-        public void StoreInDatabase(string encryptedPassword)
+        public bool StoreInDisk()
+        {
+            Disk d = new Disk();
+            string encryptedPassword = Security.Encrypt(_password);
+            return d.StorePassword(_url, _userName, encryptedPassword);
+        }
+
+        public bool StoreInDatabase()
         {
             Database db = new Database();
-            bool inserted = db.Insert(_url, _userName, encryptedPassword);
+            string encryptedPassword = Security.Encrypt(_password);
+            return db.Insert(_url, _userName, encryptedPassword);
         }
-
-        public static string Encrypt(string data)
-        {
-            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
-            byte[] encryptedDataBytes = ProtectedData.Protect(dataBytes, null, DataProtectionScope.CurrentUser);
-            return Convert.ToBase64String(encryptedDataBytes);
-        }
-
-        public static string Decrypt(string encryptedData)
-        {
-            byte[] encryptedDataBytes = Convert.FromBase64String(encryptedData);
-            byte[] decryptedBytes = ProtectedData.Unprotect(encryptedDataBytes, null, DataProtectionScope.CurrentUser);
-            return Encoding.UTF8.GetString(decryptedBytes);
-        }
-
     }
 }
