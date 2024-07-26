@@ -41,6 +41,14 @@ namespace PasswordGenerator.PGClasses
 
             return isStored;
         }
+
+        public List<Password> FindByUrl(string url)
+        {
+            string docPath = "C:\\Users\\Jeygm\\OneDrive\\Desktop\\PasswordGenerator\\PGClasses\\password.txt";
+            string data = File.ReadAllText(docPath);
+            List<Password> result = JsonConvert.DeserializeObject<List<Password>>('[' + data + ']'); ;
+            return result;
+        }
     }
 
     public class Password

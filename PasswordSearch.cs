@@ -31,9 +31,8 @@ namespace PasswordGenerator
 
         private void FetchFromDisk(string url)
         {
-            string docPath = "C:\\Users\\Jeygm\\OneDrive\\Desktop\\PasswordGenerator\\PGClasses\\password.txt";
-            string data = File.ReadAllText(docPath);
-            List<Password> ps = JsonConvert.DeserializeObject<List<Password>>('[' + data + ']');
+            Disk disk = new Disk();
+            List<Password> ps = disk.FindByUrl(url);
             string result = "{\n";
 
             foreach (Password p in ps)

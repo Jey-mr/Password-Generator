@@ -27,6 +27,7 @@ namespace PasswordGenerator
                 string? generatedPassword = GeneratePassword();
                 if (generatedPassword != null)
                 {
+                    //MessageBox.Show("Generated Password: "+generatedPassword);
                     PasswordStore form = new PasswordStore(urlVariable, userNameVariable, generatedPassword);
                     form.Show();
                 }
@@ -37,7 +38,7 @@ namespace PasswordGenerator
         private string GeneratePassword()
         {
             int minCharsVariable, upperCaseVariable, specialCharsVariable, maxCharsVariable, randomValue;
-            char[] specialCharsArr = { '!', '@', '#', '$', '%', '^', '&', '*' };
+            char[] specialCharsArr = { '!', '@', '#', '$', '%', '^', '*' };
             Random random = new Random();
 
             try
@@ -110,6 +111,7 @@ namespace PasswordGenerator
                         password += c;
                         randomValue--;
                         specialCharsVariable--;
+                        //MessageBox.Show("Remaining Special Characters: "+specialCharsVariable);
                     }
                 }
             }
@@ -126,6 +128,8 @@ namespace PasswordGenerator
                 }
             }
 
+            //MessageBox.Show("Unstriped Password: "+password);
+
             if (password.Length > maxCharsVariable)
             {
                 password = stripChars(password, minCharsVariable, maxCharsVariable);
@@ -141,27 +145,41 @@ namespace PasswordGenerator
             bool[] chars = new bool[size];
             Random random = new Random();
             int NofCharsReduce = size - random.Next(min, max + 1);
+            HashSet<char> CharSet = [];
+
+            //MessageBox.Show("No of Characters going to reduce: "+NofCharsReduce);
+
+            for (int i=0; i<size; i++)
+            {
+                chars[i] = true;
+            }
+
+            for (int i=0; i<26; i++)
+            {
+                CharSet.Add((char)('a'+i));
+            }
 
             while (NofCharsReduce > 0)
             {
                 int index = random.Next(size);
+                char c = password[index];
 
-                if (password[index] >= 'a' && password[index] <= 'z' && !chars[index])
+                if (CharSet.Contains(c) && chars[index])
                 {
-                    chars[index] = true;
+                    chars[index] = false;
                     NofCharsReduce--;
                 }
             }
-
+            
             for (int i = 0; i < size; i++)
             {
                 if (chars[i])
                 {
-                    continue;
+                    result += password[i];
                 }
-
-                result += password[i];
             }
+
+            //MessageBox.Show("Length of the result: "+result.Length);
 
             return result;
         }

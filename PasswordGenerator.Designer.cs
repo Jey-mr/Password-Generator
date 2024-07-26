@@ -45,6 +45,8 @@
             userName = new TextBox();
             label3 = new Label();
             searchPassword = new Button();
+            label2 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -74,7 +76,7 @@
             // 
             minCharsLabel.AutoSize = true;
             minCharsLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            minCharsLabel.Location = new Point(265, 332);
+            minCharsLabel.Location = new Point(180, 337);
             minCharsLabel.Name = "minCharsLabel";
             minCharsLabel.Size = new Size(268, 26);
             minCharsLabel.TabIndex = 2;
@@ -83,24 +85,24 @@
             // minChars
             // 
             minChars.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            minChars.Location = new Point(593, 329);
+            minChars.Location = new Point(522, 334);
             minChars.Name = "minChars";
-            minChars.Size = new Size(125, 34);
+            minChars.Size = new Size(388, 34);
             minChars.TabIndex = 3;
             // 
             // upperCase
             // 
             upperCase.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            upperCase.Location = new Point(593, 384);
+            upperCase.Location = new Point(522, 384);
             upperCase.Name = "upperCase";
-            upperCase.Size = new Size(125, 34);
+            upperCase.Size = new Size(388, 34);
             upperCase.TabIndex = 5;
             // 
             // upperCaseLabel
             // 
             upperCaseLabel.AutoSize = true;
             upperCaseLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            upperCaseLabel.Location = new Point(308, 387);
+            upperCaseLabel.Location = new Point(223, 387);
             upperCaseLabel.Name = "upperCaseLabel";
             upperCaseLabel.Size = new Size(225, 26);
             upperCaseLabel.TabIndex = 4;
@@ -109,16 +111,16 @@
             // specialChars
             // 
             specialChars.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            specialChars.Location = new Point(593, 435);
+            specialChars.Location = new Point(522, 435);
             specialChars.Name = "specialChars";
-            specialChars.Size = new Size(125, 34);
+            specialChars.Size = new Size(388, 34);
             specialChars.TabIndex = 7;
             // 
             // specialCharsLabel
             // 
             specialCharsLabel.AutoSize = true;
             specialCharsLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            specialCharsLabel.Location = new Point(289, 438);
+            specialCharsLabel.Location = new Point(204, 438);
             specialCharsLabel.Name = "specialCharsLabel";
             specialCharsLabel.Size = new Size(244, 26);
             specialCharsLabel.TabIndex = 6;
@@ -140,16 +142,16 @@
             // maxChars
             // 
             maxChars.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            maxChars.Location = new Point(593, 489);
+            maxChars.Location = new Point(522, 489);
             maxChars.Name = "maxChars";
-            maxChars.Size = new Size(125, 34);
+            maxChars.Size = new Size(388, 34);
             maxChars.TabIndex = 9;
             // 
             // maxCharsLabel
             // 
             maxCharsLabel.AutoSize = true;
             maxCharsLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            maxCharsLabel.Location = new Point(262, 492);
+            maxCharsLabel.Location = new Point(177, 492);
             maxCharsLabel.Name = "maxCharsLabel";
             maxCharsLabel.Size = new Size(271, 26);
             maxCharsLabel.TabIndex = 8;
@@ -158,16 +160,16 @@
             // url
             // 
             url.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            url.Location = new Point(593, 541);
+            url.Location = new Point(522, 541);
             url.Name = "url";
-            url.Size = new Size(125, 34);
+            url.Size = new Size(388, 34);
             url.TabIndex = 12;
             // 
             // urlLabel
             // 
             urlLabel.AutoSize = true;
             urlLabel.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            urlLabel.Location = new Point(472, 544);
+            urlLabel.Location = new Point(363, 544);
             urlLabel.Name = "urlLabel";
             urlLabel.Size = new Size(61, 26);
             urlLabel.TabIndex = 11;
@@ -176,16 +178,16 @@
             // userName
             // 
             userName.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            userName.Location = new Point(593, 593);
+            userName.Location = new Point(522, 593);
             userName.Name = "userName";
-            userName.Size = new Size(125, 34);
+            userName.Size = new Size(388, 34);
             userName.TabIndex = 14;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(413, 596);
+            label3.Location = new Point(304, 596);
             label3.Name = "label3";
             label3.Size = new Size(120, 26);
             label3.TabIndex = 13;
@@ -204,11 +206,35 @@
             searchPassword.UseVisualStyleBackColor = false;
             searchPassword.Click += searchPassword_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Red;
+            label2.Location = new Point(424, 544);
+            label2.Name = "label2";
+            label2.Size = new Size(24, 26);
+            label2.TabIndex = 22;
+            label2.Text = "*";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(424, 596);
+            label4.Name = "label4";
+            label4.Size = new Size(24, 26);
+            label4.TabIndex = 23;
+            label4.Text = "*";
+            // 
             // PasswordGenerator
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1091, 879);
+            Controls.Add(label4);
+            Controls.Add(label2);
             Controls.Add(searchPassword);
             Controls.Add(userName);
             Controls.Add(label3);
@@ -250,5 +276,7 @@
         private TextBox userName;
         private Label label3;
         private Button searchPassword;
+        private Label label2;
+        private Label label4;
     }
 }

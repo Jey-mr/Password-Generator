@@ -34,6 +34,7 @@ namespace PasswordGenerator
 
         private void ignore_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show("_password: " + _password);
             this.Close();
         }
 
